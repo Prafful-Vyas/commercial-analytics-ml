@@ -1,0 +1,103 @@
+{
+  "seed": 7,
+  "hcps": 3000,
+  "segmentation": {
+    "k": 5,
+    "silhouette_by_k": {
+      "2": 0.252,
+      "3": 0.236,
+      "4": 0.261,
+      "5": 0.263,
+      "6": 0.242,
+      "7": 0.226,
+      "8": 0.228
+    },
+    "ari_vs_true_archetypes": 0.35,
+    "profile_markdown": "|   segment |   patient_volume |   rx_per_patient |   rx_trend_slope |   email_open_rate |   webinar_attend_rate |   rx_26w |   hcps |\n|----------:|-----------------:|-----------------:|-----------------:|------------------:|----------------------:|---------:|-------:|\n|         0 |           58.617 |            0.188 |           -0.174 |             0.293 |                 0.667 |  291.561 |    421 |\n|         1 |           32.106 |            0.151 |           -0.018 |             0.323 |                 0.811 |  128.62  |   1183 |\n|         2 |           14.261 |            0.049 |           -0.007 |             0.181 |                 0.553 |   18.407 |    668 |\n|         3 |           36.208 |            0.156 |           -0.03  |             0.287 |                 0.032 |  153.266 |    399 |\n|         4 |           24.324 |            0.112 |           -0.009 |             0.843 |                 0.674 |   81.459 |    329 |"
+  },
+  "forecasting": {
+    "seasonal_naive": {
+      "wape": 0.0243,
+      "mape": 0.0241
+    },
+    "holt_winters": {
+      "wape": 0.0194,
+      "mape": 0.0193
+    },
+    "gbm": {
+      "wape": 0.0252,
+      "mape": 0.0251
+    }
+  },
+  "targeting": {
+    "eligible_hcps": 1528,
+    "engaged_share": 0.289,
+    "rule_past_open_rate": {
+      "auc": 0.621,
+      "lift_top20": 1.176
+    },
+    "logistic_regression": {
+      "auc": 0.6856,
+      "lift_top20": 1.631
+    },
+    "gradient_boosting": {
+      "auc": 0.6985,
+      "lift_top20": 1.782
+    }
+  },
+  "campaign": {
+    "true_att": 3.017,
+    "naive_post_difference": 0.58,
+    "difference_in_differences": 3.227,
+    "ipw_did": 3.35,
+    "ipw_did_95ci": [
+      2.398,
+      4.3
+    ],
+    "propensity_auc": 0.775
+  },
+  "next_best_action": {
+    "policies": {
+      "all_none": {
+        "true_profit_per_hcp": 0.0,
+        "ips_profit_per_hcp": 0.0
+      },
+      "all_rep": {
+        "true_profit_per_hcp": 1.279,
+        "ips_profit_per_hcp": 1.164
+      },
+      "all_email": {
+        "true_profit_per_hcp": 0.773,
+        "ips_profit_per_hcp": 0.973
+      },
+      "all_webinar": {
+        "true_profit_per_hcp": 2.63,
+        "ips_profit_per_hcp": 2.359
+      },
+      "uplift_model_nba": {
+        "true_profit_per_hcp": 2.963,
+        "ips_profit_per_hcp": 2.256
+      },
+      "oracle": {
+        "true_profit_per_hcp": 3.762,
+        "ips_profit_per_hcp": null
+      }
+    },
+    "best_single_channel": "all_webinar",
+    "model_action_mix": {
+      "webinar": 0.488,
+      "email": 0.184,
+      "none": 0.171,
+      "rep": 0.157
+    },
+    "agreement_with_oracle": 0.584,
+    "share_of_oracle_profit": 0.788
+  },
+  "arms": [
+    "none",
+    "rep",
+    "email",
+    "webinar"
+  ],
+  "seconds": 14.8
+}
